@@ -34,8 +34,8 @@ there, then leave the window open. Done.
 > cd blackboard-archive  
 > bash setup.sh~~
 ``
-
-~~Sign in when the Chromium window appears, wait ~5–30 min, find your courses in `./out/`.~~
+---
+Sign in when the Chromium window appears, wait ~5 min –2 h, find your courses in `./out/`.
 
 I am not well-versed in macOS, so I am discontinuing support for it as well. There are no current plans to resume such support.
 
