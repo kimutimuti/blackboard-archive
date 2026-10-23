@@ -87,16 +87,16 @@ Requires Python 3.10+.
 > BB_BASE="https://blackboard.youruni.edu" .venv/bin/python nec_archive.py~~  
 >
 > ~~#Just enumerate, no downloads  
-> NEC_DRY_RUN=1 .venv/bin/python nec_archive.py  
+> NEC_DRY_RUN=1 .venv/bin/python nec_archive.py~~  
 > 
-> #Restrict to specific course IDs  
-> NEC_COURSES=_12345_1,_67890_1 .venv/bin/python nec_archive.py  
+> ~~#Restrict to specific course IDs  
+> NEC_COURSES=_12345_1,_67890_1 .venv/bin/python nec_archive.py~~  
 >
-> #Verbose progress logging  
-> NEC_VERBOSE=1 .venv/bin/python nec_archive.py  
+> ~~#Verbose progress logging  
+> NEC_VERBOSE=1 .venv/bin/python nec_archive.py~~  
 > 
-> #Help a friend without trampling your own session — use isolated profile + output  
-> BB_PROFILE=.pw_profile_friend BB_OUT=out_friend .venv/bin/python nec_archive.py
+> ~~#Help a friend without trampling your own session — use isolated profile + output  
+> BB_PROFILE=.pw_profile_friend BB_OUT=out_friend .venv/bin/python nec_archive.py~~
 
 
 ---
