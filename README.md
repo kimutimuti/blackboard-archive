@@ -1,51 +1,55 @@
 # Blackboard bulk archiver
 
-> Tested against **NEC's Blackboard** (`blackboard.nec.edu`) ahead of the June 2026
-> shutdown. Works on any Blackboard Learn instance whose course shells render in
-> Original view (most US universities), even when wrapped in the Ultra chrome.
+> Works on any Blackboard Learn instance whose course shells
+> render in Original view, even when wrapped in the Ultra chrome.
 
 ---
 
-## 🤖 Not technical? Ask your AI to run it for you.
+## ~~🤖 Not technical? Ask your AI to run it for you.~~
 
-Open Claude, ChatGPT (with code execution / desktop terminal access), Cursor,
-Copilot, or any AI assistant that can run commands on your computer, and paste:
+~~Open Claude, ChatGPT (with code execution / desktop terminal access), Cursor,
+Copilot, or any AI assistant that can run commands on your computer, and paste:~~
 
-> Clone `https://github.com/shankara-n/blackboard-archive` into my home folder
+> ~~Clone `https://github.com/shankara-n/blackboard-archive` into my home folder
 > and follow `AGENTS.md` to set it up and run it. I'll sign in to Blackboard
-> when a Chromium window pops up.
+> when a Chromium window pops up.~~
 
-The repo includes an [`AGENTS.md`](AGENTS.md) with explicit step-by-step
+~~The repo includes an [`AGENTS.md`](AGENTS.md) with explicit step-by-step
 instructions for AI assistants, and a [`setup.sh`](setup.sh) that handles
-everything in one command.
+everything in one command.~~
 
+As it is unclear how much the script has diverged from the original fork, I am suspending support for agent-related things. There is no set date for when this support might resume.
+
+---
 When a Chromium window pops up: that's the script's own browser ("Chrome for
 Testing" — different icon from your regular Chrome). Sign in to your Blackboard
 there, then leave the window open. Done.
 
 ---
 
-## 🧑‍💻 Manual quick start (macOS / Linux)
+## ~~🧑‍💻 Manual quick start (macOS / Linux)~~
 
-```bash
-git clone https://github.com/shankara-n/blackboard-archive.git
-cd blackboard-archive
-bash setup.sh
-```
+``
+> ~~git clone https://github.com/shankara-n/blackboard-archive.git  
+> cd blackboard-archive  
+> bash setup.sh~~
+``
 
-Sign in when the Chromium window appears, wait ~5–30 min, find your courses in `./out/`.
+~~Sign in when the Chromium window appears, wait ~5–30 min, find your courses in `./out/`.~~
+
+I am not well-versed in macOS, so I am discontinuing support for it as well. There are no current plans to resume such support.
 
 ## 🪟 Windows quick start
 
 ```powershell
-git clone https://github.com/shankara-n/blackboard-archive.git
+git clone https://github.com/kimutimuti/blackboard-archive.git
 cd blackboard-archive
 python -m venv .venv
 .venv\Scripts\pip install playwright beautifulsoup4 requests
 .venv\Scripts\playwright install chromium
 .venv\Scripts\python nec_archive.py
 ```
-
+---
 If `python` isn't installed: get it from <https://python.org/downloads/> and check the **"Add Python to PATH"** box during install.
 
 ---
@@ -64,39 +68,43 @@ What it does **not** get:
 - Recorded lectures / videos embedded via third-party tools (Panopto, Echo360, Kaltura)
 - Anything that requires Ultra-mode rendering (most institutions use Original view inside an Ultra frame; that's what this scrapes)
 
-## Advanced — manual install + env knobs
-
+## ~~Advanced — manual install + env knobs~~
+---
 Requires Python 3.10+.
 
-```bash
-python3 -m venv .venv
-.venv/bin/pip install playwright beautifulsoup4 requests
-.venv/bin/playwright install chromium
-```
+---
 
-```bash
-# Default: blackboard.nec.edu
-.venv/bin/python nec_archive.py
+> ~~python3 -m venv .venv  
+> .venv/bin/pip install playwright beautifulsoup4 requests  
+> .venv/bin/playwright install chromium~~
 
-# Other school
-BB_BASE="https://blackboard.youruni.edu" .venv/bin/python nec_archive.py
+<br>
 
-# Just enumerate, no downloads
-NEC_DRY_RUN=1 .venv/bin/python nec_archive.py
+> ~~#Default: blackboard.nec.edu  
+> .venv/bin/python nec_archive.py~~  
+>
+> ~~#Other school  
+> BB_BASE="https://blackboard.youruni.edu" .venv/bin/python nec_archive.py~~  
+>
+> ~~#Just enumerate, no downloads  
+> NEC_DRY_RUN=1 .venv/bin/python nec_archive.py  
+> 
+> #Restrict to specific course IDs  
+> NEC_COURSES=_12345_1,_67890_1 .venv/bin/python nec_archive.py  
+>
+> #Verbose progress logging  
+> NEC_VERBOSE=1 .venv/bin/python nec_archive.py  
+> 
+> #Help a friend without trampling your own session — use isolated profile + output  
+> BB_PROFILE=.pw_profile_friend BB_OUT=out_friend .venv/bin/python nec_archive.py
 
-# Restrict to specific course IDs
-NEC_COURSES=_12345_1,_67890_1 .venv/bin/python nec_archive.py
 
-# Verbose progress logging
-NEC_VERBOSE=1 .venv/bin/python nec_archive.py
-
-# Help a friend without trampling your own session — use isolated profile + output
-BB_PROFILE=.pw_profile_friend BB_OUT=out_friend .venv/bin/python nec_archive.py
-```
-
+---
 First run: a Chromium window opens. Sign in via your school's SSO (Microsoft/Google/etc. + MFA). The script polls every 3 s and auto-continues when it sees a valid session. The session is saved to `.pw_profile/` so subsequent runs skip login.
 
 **Leave the Chromium window open** until the script prints `Done.` — closing it mid-run will crash the scrape.
+
+---
 
 ## Output
 
