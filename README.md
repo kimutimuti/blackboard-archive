@@ -47,7 +47,7 @@ cd blackboard-archive
 python -m venv .venv
 .venv\Scripts\pip install playwright beautifulsoup4 requests
 .venv\Scripts\playwright install chromium
-.venv\Scripts\python generic_archive_v2.py --url "https://your_university's_blackboard.com"
+.venv\Scripts\python generic_archive_v3.py --url "https://your_university's_blackboard.com"
 ```
 ---
 If `python` isn't installed: get it from <https://python.org/downloads/> and check the **"Add Python to PATH"** box during install.
